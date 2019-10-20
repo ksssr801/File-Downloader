@@ -4,23 +4,23 @@ echo $INSTDIR
 SOURCEDIR="$(dirname "$INSTDIR")"
 echo $SOURCEDIR
 
-python3 -m venv /opt/DownloaderEnv
-source /opt/DownloaderEnv/bin/activate
-echo "Virtual environment (/opt/DownloaderEnv/) has been created"
+python3 -m venv DownloaderEnv
+source DownloaderEnv/bin/activate
+echo "Virtual environment (DownloaderEnv) has been created"
 echo ""
 echo "Installing the Python dependencies"
-/opt/DownloaderEnv/bin/pip3 install --upgrade pip
+DownloaderEnv/bin/pip3 install --upgrade pip
 chmod +x requirement.sh
 ./requirement.sh
 echo ""
 echo "All Python dependencies has been installed"
 
 cd $SOURCEDIR
-chmod +x portal.sh
+chmod +x downloader.sh
 chmod +x celery_worker.sh
 chmod +x celery_beat.sh
-/opt/DownloaderEnv/bin/python3 manage.py makemigrations
-/opt/DownloaderEnv/bin/python3 manage.py migrate
+DownloaderEnv/bin/python3 manage.py makemigrations
+DownloaderEnv/bin/python3 manage.py migrate
 
 cd $INSTDIR
 chmod +x createdownloaderservice.sh
