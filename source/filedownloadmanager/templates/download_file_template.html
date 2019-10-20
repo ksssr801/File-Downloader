@@ -1,0 +1,18 @@
+<h2>Download Your File</h2>
+
+<form action="/myapi/download">
+    <label for="url">Enter URL to download: </label>
+    <input id="url" type="text" name="url" value="{{ url }}">
+    <input type="submit" value="OK">
+</form>
+<br>
+{% if is_url  %}
+    <label></label>{{ is_url }}
+{% endif %}
+{% if file_id != '' %}
+    <label for="id">File ID: </label>{{ file_id }}
+    <br>
+    <form action="/myapi/status">
+        <input type="submit" value="Get Status for the File ID">
+    </form>
+{% endif %}

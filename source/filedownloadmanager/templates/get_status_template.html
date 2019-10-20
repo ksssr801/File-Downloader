@@ -1,0 +1,19 @@
+<h2>Track your Download</h2>
+
+<form action="/myapi/status">
+    <label for="id">Enter File ID: </label>
+    <input id="id" type="text" name="id" value="{{ file_id }}">
+    <input type="submit" value="Get Status">
+</form>
+<br>
+<br>
+{% if msg %}
+    <label></label> {{ msg }}
+{% endif %}
+{% if file_id %}
+    <label>Total File Size: </label> {{total_file_size}}<br>
+    <label>Downloading File Size: </label> {{downloading_file_size}}<br>
+    <label>Remaining File Size: </label> {{remaining_file_size}}<br>
+    <label>Status: </label> {{status}}<br>
+    <label>Estimated Completion Time : </label> {{estimated_time_to_complete}}
+{% endif %}
