@@ -35,8 +35,7 @@ SECRET_KEY = '8^*ro@a+w9)0nj4g&gi&vu4=361%@1ej7pcj^g-+&i4(s@v#y#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -49,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework', # Added
     'filedownloadmanager', # Added
+    'channels', # Added
 ]
 
 MIDDLEWARE = [
@@ -62,6 +62,16 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'djapi.urls'
+ASGI_APPLICATION = "djapi.routing.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)]
+        },
+    },
+}
 
 TEMPLATES = [
     {
@@ -79,7 +89,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djapi.wsgi.application'
+# WSGI_APPLICATION = 'djapi.wsgi.application'
 
 
 # Database

@@ -1,19 +1,22 @@
-<h2>Track your Download</h2>
-
-<form action="/myapi/status">
-    <label for="id">Enter File ID: </label>
-    <input id="id" type="text" name="id" value="{{ file_id }}">
-    <input type="submit" value="Get Status">
-</form>
+<h2>Tracking Status of the file - {{ file_name }}</h2>
+<br>
 <br>
 <br>
 {% if msg %}
     <label></label> {{ msg }}
 {% endif %}
 {% if file_id %}
-    <label>Total File Size: </label> {{total_file_size}}<br>
-    <label>Downloading File Size: </label> {{downloading_file_size}}<br>
-    <label>Remaining File Size: </label> {{remaining_file_size}}<br>
-    <label>Status: </label> {{status}}<br>
+    <script>
+        setTimeout(function(){
+            window.location.reload(1)
+        }, 5000);
+    </script>
+    <label>File Name : </label> {{file_name}}<br><br>
+    <label>File Id : </label> {{file_id}}<br><br>
+    <label>Total File Size : </label> {{file_size}}<br><br>
+    <label>Downloaded : </label> {{downloaded_file_size}}<br><br>
+    <label>Remaining : </label> {{remaining_file_size}}<br><br>
+    <label>Status : </label> {{ status }}<br><br>
     <label>Estimated Completion Time : </label> {{estimated_time_to_complete}}
 {% endif %}
+
