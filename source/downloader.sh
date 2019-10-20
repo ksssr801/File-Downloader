@@ -1,8 +1,8 @@
 #!/bin/sh
-source DownloaderEnv/bin/activate
+source /opt/DownloaderEnv/bin/activate
 start()
 {
-DownloaderEnv/bin/python3 manage.py runserver 0.0.0.0:8080 --noreload
+/opt/DownloaderEnv/bin/python3 manage.py runserver 0.0.0.0:9001 --noreload
 }
 start
 

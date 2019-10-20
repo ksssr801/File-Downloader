@@ -4,12 +4,12 @@ echo $INSTDIR
 SOURCEDIR="$(dirname "$INSTDIR")"
 echo $SOURCEDIR
 
-python3 -m venv DownloaderEnv
-source DownloaderEnv/bin/activate
+python3 -m venv /opt/DownloaderEnv
+source /opt/DownloaderEnv/bin/activate
 echo "Virtual environment (DownloaderEnv) has been created"
 echo ""
 echo "Installing the Python dependencies"
-DownloaderEnv/bin/pip3 install --upgrade pip
+/opt/DownloaderEnv/bin/pip3 install --upgrade pip
 chmod +x requirement.sh
 ./requirement.sh
 echo ""
@@ -19,8 +19,8 @@ cd $SOURCEDIR
 chmod +x downloader.sh
 chmod +x celery_worker.sh
 chmod +x celery_beat.sh
-DownloaderEnv/bin/python3 manage.py makemigrations
-DownloaderEnv/bin/python3 manage.py migrate
+/opt/DownloaderEnv/bin/python3 manage.py makemigrations
+/opt/DownloaderEnv/bin/python3 manage.py migrate
 
 cd $INSTDIR
 chmod +x createdownloaderservice.sh
@@ -36,12 +36,12 @@ else
 fi
 
 cd $INSTDIR
-chmod +x createceleryworkerservice.sh
+chmod +x create_celeryworkerservice.sh
 echo -n "Install Downloader Celery Worker Service. (y/n)? "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
     echo ""
-    ./createceleryworkerservice.sh
+    ./create_celeryworkerservice.sh
 else
     echo ""
     echo "Downloader Celery Worker service can be created seperately by executing 'createceleryworkerservice.sh' from installation folder."
@@ -49,12 +49,12 @@ else
 fi
 
 cd $INSTDIR
-chmod +x createcelerybeatservice.sh
+chmod +x create_celerybeatservice.sh
 echo -n "Install Downloader Celery Beat Service. (y/n)? "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
     echo ""
-    ./createcelerybeatservice.sh
+    ./create_celerybeatservice.sh
 else
     echo ""
     echo "Downloader Celery Beat service can be created seperately by executing 'createcelerybeatservice.sh' from installation folder."

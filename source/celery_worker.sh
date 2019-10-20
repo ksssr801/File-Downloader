@@ -1,3 +1,3 @@
 #!/bin/sh
 
-DownloaderEnv/bin/celery -A djapi worker -l info
+/opt/DownloaderEnv/bin/celery -A djapi worker -l info
