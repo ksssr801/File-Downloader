@@ -16,13 +16,17 @@ To run celery manually:
 Go to source folder of your code. 
 
 celery -A djapi worker -l info
+
 celery -A djapi beat -l info
 
 OR
 
 Open terminal. 
+
 Go to source/installation/
+
 chmod +x downloader_dep.sh
+
 ./downloader_dep.sh
 
 if any service creation fails, run it manually. 
@@ -30,6 +34,8 @@ Open terminal.
 Enable Env and go to source.
 
 python3 manage.py runserver 0:80
+
 celery -A djapi worker -l info
+
 celery -A djapi beat -l info
 
