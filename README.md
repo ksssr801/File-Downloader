@@ -29,13 +29,30 @@ chmod +x downloader_dep.sh
 
 ./downloader_dep.sh
 
+downloader service must be running if not run using:
+
+service <service-name> start
+
 if any service creation fails, run it manually. 
-Open terminal. 
+Open terminal.(3 different terminals need to be opened.)
 Enable Env and go to source.
 
-python3 manage.py runserver 0:80
+python3 manage.py runserver 0:9001
 
 celery -A djapi worker -l info
 
 celery -A djapi beat -l info
 
+
+> How to use it.
+
+After running the app.
+Go to browser and write URL localhost:9001/myapi/download
+
+Using two URLs for the app:
+
+localhost:9001/myapi/download
+
+localhost:9001/myapi/status
+
+It will download the file in the source folder.
